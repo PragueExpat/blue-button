@@ -2,6 +2,8 @@
 
 "use strict";
 
+exports.sense = require("./lib/sense.js");
+
 exports.parser = require("./lib/parser.js");
 
-exports.validator = require("./lib/validator.js");
+//exports.validator = require("./lib/validator.js");
