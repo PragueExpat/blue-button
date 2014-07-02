@@ -49,7 +49,7 @@ describe('component', function() {
                 ["p10", "1..1", "h:prop0", prop10],
                 ["p11", "1..1", "h:prop0", prop11],
                 ["p12", "1..1", "h:prop0", prop12],
-                ["p13", "1..1", "h:prop0", prop13],
+                ["p13", "1..1", "h:prop0", prop13]
             ]);
             component1.cleanupStep(namedCleanupStep('cu10'));
             component1.cleanupStep(namedCleanupStep('cu11'));
@@ -71,7 +71,7 @@ describe('component', function() {
             component2.fields([
                 ["p20", "1..1", "h:prop0", prop20],
                 ["p21", "1..1", "h:prop0", prop21],
-                ["p22", "1..1", "h:prop0", prop22],
+                ["p22", "1..1", "h:prop0", prop22]
             ]);
             component2.cleanupStep(namedCleanupStep('cu20'));
             component2.cleanupStep(namedCleanupStep('cu21'));
@@ -89,7 +89,7 @@ describe('component', function() {
     
             var component3 = component2.define('component3'); 
             component3.fields([
-                ["p3", "1..1", "h:prop0", prop3],
+                ["p3", "1..1", "h:prop0", prop3]
             ]);
             var ps = component3.overallParsers();
             checkParsersFromPath(ps, ['p10', 'p11', 'p12', 'p13', 'p20', 'p21', 'p22', 'p3']);
@@ -117,7 +117,7 @@ describe('component', function() {
     
             var component3 = component2.define('component3'); 
             component3.fields([
-                ["p3", "1..1", "h:prop0", prop3],
+                ["p3", "1..1", "h:prop0", prop3]
             ]);
             component3.cleanupStep(namedCleanupStep('c3'));
             var ps = component3.overallParsers();
@@ -167,7 +167,7 @@ describe('component', function() {
                 ["p21", "1..1", "h:prop0", prop21],
 
                 ["p21", "1..1", "h:prop0", prop21sc1, 'sc1'],
-                ["p22", "1..1", "h:prop0", prop22],
+                ["p22", "1..1", "h:prop0", prop22]
             ]);
             component2.cleanupStep(namedCleanupStep('cu20'));
             component2.cleanupStep(namedCleanupStep('cu21'));
@@ -203,7 +203,7 @@ describe('component', function() {
             component2.fields([
                 ["p20", "1..1", "h:prop0", prop20],
                 ["p21", "1..1", "h:prop0", prop21],
-                ["p22", "1..1", "h:prop0", prop22],
+                ["p22", "1..1", "h:prop0", prop22]
             ]);
             component2.cleanupStep(namedCleanupStep('cu20sc1only'), ['sc1']);
             component2.cleanupStep(namedCleanupStep('cu20'));
