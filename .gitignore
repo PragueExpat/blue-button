@@ -10,4 +10,9 @@ coverage
 .project
 .settings
 *.md.html
-.idea
+
+# ccda-explorer
+ccda-explorer/dump/
+ccda-explorer/dump_gen_xml/
+ccda-explorer/sample_ccdas/
+
