@@ -1,6 +1,6 @@
 {
   "name": "blue-button",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Blue Button (CCDA) to JSON Parser.",
   "main": "/index.js",
   "directories": {
@@ -12,40 +12,52 @@
     "test": "grunt test"
   },
   "author": "Dmitry Kachaev <dmitry@amida-tech.com>",
-  "contributors": [{
-    "name": "Matthew McCall",
-    "email": "matt@amida-tech.com"
-  }, {
-    "name": "Afsin Ustundag",
-    "email": "afsin.ustundag@us.pwc.com"
-  }],
+  "contributors": [
+    {
+      "name": "Matthew McCall",
+      "email": "matt@amida-tech.com"
+    },
+    {
+      "name": "Afsin Ustundag",
+      "email": "afsin.ustundag@us.pwc.com"
+    }
+  ],
   "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "libxmljs": "*",
+    "blue-button-meta": "^0.1.0",
     "deep-equal": "*",
-    "underscore":"1.6.x",
+    "libxmljs": "*",
     "node-uuid": "*",
-    "xdate":"*"
+    "underscore": "1.6.x",
+    "winston": "^0.7.3",
+    "xdate": "*",
+    "z-schema": "^2.4.8"
   },
   "devDependencies": {
-    "should": "3.1.x",
     "assert": "1.1.x",
-    "mocha": "1.17.x",
     "chai": "1.8.x",
     "chai-datetime": "1.1.x",
-    "grunt": "0.4.x",
-    "grunt-mocha-test": "0.8.x",
-    "grunt-contrib-jshint": "0.8.x",
-    "grunt-express-server": "0.4.x",
-    "grunt-contrib-watch": "0.6.x",
-    "grunt-coveralls" :"*",
-    "grunt-istanbul-coverage" :"*",
     "coveralls": "~2.10.0",
-    "mocha-lcov-reporter": "0.0.1"
-},
+    "execSync": "^1.0.1-pre",
+    "grunt": "0.4.x",
+    "grunt-contrib-jshint": "0.8.x",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-coveralls": "*",
+    "grunt-express-server": "0.4.x",
+    "grunt-istanbul-coverage": "*",
+    "grunt-jsbeautifier": "^0.2.7",
+    "grunt-mocha-test": "0.8.x",
+    "mocha": "1.17.x",
+    "mocha-lcov-reporter": "0.0.1",
+    "path": "^0.4.9",
+    "should": "3.1.x",
+    "walk": "^2.3.3",
+    "winston": "^0.7.3",
+    "xmldom": "^0.1.19"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/amida-tech/bluebutton.git"
@@ -58,4 +70,3 @@
   },
   "homepage": "https://github.com/amida-tech/blue-button"
 }
-
