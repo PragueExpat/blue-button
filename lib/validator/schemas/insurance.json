@@ -2,24 +2,31 @@
     "type": "object",
     "$schema": "http://json-schema.org/draft-04/schema",
     "properties": {
+
+        "code": {
+            "type": "object",
+            "properties": {
+                "$ref": "http://local.com/common_models#/properties/cda_coded_entry"
+            }
+        },
         "addresses": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_address"
+                "$ref": "http://local.com/common_models#/properties/cda_address"
             },
             "minItems": 1
         },
-        "date": {
-            "type": "array",
-            "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_date"
-            }
+        "date_time": {
+            "$ref": "http://local.com/common_models#/properties/cda_date"
         },
         "plan_id": {
-            "$ref": "http://local.com/commonModels#/properties/cda_id"
+            "$ref": "http://local.com/common_models#/properties/cda_id"
         },
         "plan_information": {
             "type": "string"
+        },
+        "performer":{
+            "$ref": "http://local.com/common_models#/properties/cda_performer"
         },
         "plan_name": {
             "type": "string"
@@ -40,29 +47,29 @@
             "type": "string"
         },
         "member_name": {
-            "$ref": "http://local.com/commonModels#/properties/cda_name"
+            "$ref": "http://local.com/common_models#/properties/cda_name"
         },
         "member_id": {
-            "$ref": "http://local.com/commonModels#/properties/cda_id"
+            "$ref": "http://local.com/common_models#/properties/cda_id"
         },
         "payer_name": {
             "type": "string"
         },
         "payer_id": {
-            "$ref": "http://local.com/commonModels#/properties/cda_id"
+            "$ref": "http://local.com/common_models#/properties/cda_id"
         },
         "email ": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_address"
+                "$ref": "http://local.com/common_models#/properties/cda_email"
             }
         },
         "phone ": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_phone"
+                "$ref": "http://local.com/common_models#/properties/cda_phone"
             }
-        } 
+        }
     },
     "additionalProperties": false
 
