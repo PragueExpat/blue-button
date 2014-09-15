@@ -5,6 +5,8 @@ coverage
 
 # Mac OSX
 .DS_Store
+realsample.txt
+record.txt
 
 # Eclipse
 .project
@@ -14,7 +16,12 @@ coverage
 # ccda-explorer
 ccda-explorer/dump/
 ccda-explorer/dump_gen_xml/
+ccda-explorer/dump_gen_json/
 ccda-explorer/sample_ccdas/
 
-.idea
+test/fixtures/files/generated/
+test/fixtures/files/parse_gen_parse
 
+test/proprietary
+
+.idea

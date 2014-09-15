@@ -8,7 +8,7 @@
         "diagnosis": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_coded_entry"
+                "$ref": "http://local.com/common_models#/properties/cda_coded_entry"
             }
         },
         "name": {
@@ -20,11 +20,8 @@
                 "type": "string"
             }
         },
-        "start_date": {
-            "$ref": "http://local.com/commonModels#/properties/cda_date"
-        },
-        "end_date": {
-            "$ref": "http://local.com/commonModels#/properties/cda_date"
+        "date_time": {
+            "$ref": "http://local.com/common_models#/properties/cda_date"
         },
         "service": {
             "type": "string"
@@ -38,11 +35,14 @@
         "phone": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_phone"
+                "$ref": "http://local.com/common_models#/properties/cda_phone"
             }
         },
-        "provider_id": {
-            "$ref": "http://local.com/commonModels#/properties/cda_id"
+        "performer": {
+            "type": "array",
+            "items": {
+                "$ref": "http://local.com/common_models#/properties/cda_performer"
+            }
         },
         "charges": {
             "type": "object",
@@ -67,13 +67,17 @@
                     "value": "number",
                     "unit": "string"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "lines": {
             "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
+                    "line": {
+                        "type": "string"
+                    },
                     "charges": {
                         "type": "object",
                         "properties": {
@@ -92,7 +96,8 @@
                             "provider_paid": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "additionalProperties": false
                     },
                     "drug": {
                         "type": "object",
@@ -106,12 +111,10 @@
                             "name": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "additionalProperties": false
                     },
-                    "end_date": {
-                        "$ref": "http://local.com/commonModels#/properties/cda_date"
-                    },
-                    "modifiers": {
+                    "modifier": {
                         "type": "array",
                         "items": {
                             "properties": {
@@ -124,7 +127,8 @@
                                 "name": {
                                     "type": "string"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         }
                     },
                     "number": {
@@ -142,21 +146,8 @@
                             "name": {
                                 "type": "string"
                             }
-                        }
-                    },
-                    "prescriber": {
-                        "type": "object",
-                        "properties": {
-                            "id": {
-                                "$ref": "http://local.com/commonModels#/properties/cda_id"
-                            },
-                            "description": {
-                                "type": "string"
-                            },
-                            "name": {
-                                "type": "string"
-                            }
-                        }
+                        },
+                        "additionalProperties": false
                     },
                     "procedure": {
                         "type": "object",
@@ -170,7 +161,8 @@
                             "name": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "additionalProperties": false
                     },
                     "quantity": {
                         "type": "object",
@@ -181,17 +173,13 @@
                             "unit": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "additionalProperties": false
                     },
-                    "rendering provider": {
-                        "type": "object",
-                        "properties": {
-                            "npi": {
-                                "type": "string"
-                            },
-                            "number": {
-                                "type": "string"
-                            }
+                    "performer": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "http://local.com/common_models#/properties/cda_performer"
                         }
                     },
                     "revenue": {
@@ -206,13 +194,26 @@
                             "name": {
                                 "type": "string"
                             }
-                        }
+                        },
+                        "additionalProperties": false
                     },
-                    "service date": {
-                        "$ref": "http://local.com/commonModels#/properties/cda_date"
+                    "date_time": {
+                        "$ref": "http://local.com/common_models#/properties/cda_date"
                     },
-                    "start_date": {
-                        "$ref": "http://local.com/commonModels#/properties/cda_date"
+                    "type": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
                     },
                     "type_of_service_code": {
                         "type": "string"
@@ -220,50 +221,8 @@
                     "type_of_service": {
                         "type": "number"
                     }
-                }
-            }
-        },
-        "provider": {
-            "type": "object",
-            "properties": {
-                "address": {
-                    "$ref": "http://local.com/commonModels#/properties/cda_address"
                 },
-                "identifiers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://local.com/commonModels#/properties/cda_id"
-                    }
-                },
-                "organization": {
-                    "type": "object",
-                    "properties": {
-                        "address": {
-                            "$ref": "http://local.com/commonModels#/properties/cda_address"
-                        },
-                        "identifiers": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "http://local.com/commonModels#/properties/cda_id"
-                            }
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "phone": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "http://local.com/commonModels#/properties/cda_phone"
-                            }
-                        },
-                        "email": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "http://local.com/commonModels#/properties/cda_email"
-                            }
-                        }
-                    }
-                }
+                "additionalProperties": false
             }
         }
     },

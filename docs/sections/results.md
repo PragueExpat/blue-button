@@ -9,12 +9,12 @@
         "identifiers": {
             "type": "array",
             "items": {
-                "$ref": "http://local.com/commonModels#/properties/cda_id"
+                "$ref": "http://local.com/common_models#/properties/cda_id"
             },
             "minItems": 1
         },
         "result_set": {
-            "$ref": "http://local.com/commonModels#/properties/cda_coded_entry"
+            "$ref": "http://local.com/common_models#/properties/cda_coded_entry"
         },
         "results": {
             "type": "array",
@@ -25,13 +25,13 @@
                     "date": {
                         "type": "array",
                         "items": {
-                            "$ref": "http://local.com/commonModels#/properties/cda_date"
+                            "$ref": "http://local.com/common_models#/properties/cda_date"
                         }
                     },
                     "identifiers": {
                         "type": "array",
                         "items": {
-                            "$ref": "http://local.com/commonModels#/properties/cda_id"
+                            "$ref": "http://local.com/common_models#/properties/cda_id"
                         }
                     },
                     "interpretations": {
@@ -41,7 +41,7 @@
                         }
                     },
                     "result": {
-                        "$ref": "http://local.com/commonModels#/properties/cda_coded_entry"
+                        "$ref": "http://local.com/common_models#/properties/cda_coded_entry"
                     },
                     "status": {
                         "type": "string"
@@ -51,6 +51,9 @@
                     },
                     "value": {
                         "type": "number"
+                    },
+                    "text": {
+                        "type": "string"
                     },
                     "reference_range": {
                         "type": "object",
@@ -148,6 +151,12 @@
 - //ClinicalDocument/component/structuredBody/component/section/entry/organizer/component/observation/value@unit
 - Reference 2.28 of CDA spec for PQ style.  All I've seen so far.
 - Optional, but results are largely worthless without it.
+
+####Result_set.results.text
+- 0..1
+- //ClinicalDocument/component/structuredBody/component/section/entry/organizer/component/observation/text
+- Amended as freetext alternative to value/units pairing; this is possible in C32 data.
+
 
 ####Result_set.results.reference_range
 - 0..1

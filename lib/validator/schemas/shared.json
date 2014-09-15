@@ -14,7 +14,7 @@
                 "state": {
                     "type": "string"
                 },
-                "streetLines": {
+                "street_lines": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -28,13 +28,29 @@
                     "type": "string"
                 }
             },
+            "additionalProperties": false,
             "required": [
-                "streetLines",
+                "street_lines",
                 "city"
             ]
         },
-        "additionalProperties": false,
         "cda_date": {
+            "type": "object",
+            "properties": {
+                "low": {
+                    "$ref": "http://local.com/common_models#/properties/cda_date_element"
+                },
+                "point": {
+                    "$ref": "http://local.com/common_models#/properties/cda_date_element"
+                },
+                "high": {
+                    "$ref": "http://local.com/common_models#/properties/cda_date_element"
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+        },
+        "cda_date_element": {
             "type": "object",
             "properties": {
                 "date": {
@@ -83,7 +99,7 @@
         "cda_id": {
             "type": "object",
             "properties": {
-                "identifier_type": {
+                "extension": {
                     "type": "string"
                 },
                 "identifier": {
@@ -117,11 +133,7 @@
                     "type": "string"
                 }
             },
-            "additionalProperties": false,
-            "required": [
-                "first",
-                "last"
-            ]
+            "additionalProperties": false
         },
         "cda_coded_entry": {
             "type": "object",
@@ -147,6 +159,9 @@
                                 "type": "string"
                             },
                             "name": {
+                                "type": "string"
+                            },
+                            "nullFlavor": {
                                 "type": "string"
                             }
                         },
@@ -178,27 +193,117 @@
         "cda_location": {
             "type": "object",
             "properties": {
-                "addresses": {
+                "address": {
                     "type": "array",
                     "items": {
                         "$ref": "#/properties/cda_address"
                     },
-                    "minItems":1
+                    "minItems": 1
                 },
-                "loc_type": {
+                "location_type": {
                     "$ref": "#/properties/cda_coded_entry"
                 },
                 "name": {
                     "type": "string"
                 },
-                "phones": {
+                "phone": {
                     "type": "array",
                     "items": {
                         "$ref": "#/properties/cda_phone"
                     }
                 }
             },
-            "required":["name"],
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        },
+        "cda_organization": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://local.com/common_models#/properties/cda_address"
+                    }
+                },
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_id"
+                    }
+                },
+                "name": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "phone": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_phone"
+                    }
+                },
+                "email": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_email"
+                    }
+                },
+                "phone": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_phone"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "cda_performer": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_address"
+                    }
+                },
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_id"
+                    }
+                },
+                "name": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [{
+                            "$ref": "#/properties/cda_name"
+                        }, {
+                            "type": "string"
+                        }]
+                    }
+                },
+                "organization": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_organization"
+                    }
+                },
+                "phone": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/properties/cda_phone"
+                    }
+                },
+                "code": {
+                    "ref": "#/properties/cda_coded_entry"
+                }
+            },
             "additionalProperties": false
         }
     }

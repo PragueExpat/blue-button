@@ -12,13 +12,15 @@ Blue Button JavaScript (Node.js) library
 
 ## Library interfaces/APIs
 
-This library provides following functionality
+This library provides the following functionality
 
 - Parse XML documents (via libxmljs)
-- Sense type of data (e.g. CCDA, C32, etc)
+- Sense type of data (e.g. CCDA, CMS, C32, etc)
 - Parse CCDA into JSON representation
 	- Parse CCDA elements (sections) into JSON representation
-- Generating JSON object based on data model
+- Parse CMS into JSON representation
+  - Parse CMS elements (sections) into JSON representation
+- Generate JSON object based on data model
 
 ### Usage example
 
@@ -169,7 +171,8 @@ getting:
   meta: 
    { type: 'cms',
      version: '2.0',
-     timestamp: { date: '2013-03-16T05:10:00.000Z', precision: 'minute' } } }
+     timestamp: { date: '2013-03-16T05:10:00Z', precision: 'minute' },
+     sections: ['demographics', ..., 'claims'] } }
 
 ``` 
 
@@ -204,22 +207,32 @@ getting:
      socialHistory: [ [Object] ],
      problems: [ [Object], [Object] ],
      procedures: [ [Object], [Object], [Object] ] },
-  meta: { version: '0.0.4' },
+  meta: {
+        version: "1.1.0-beta.1",
+        sections: [
+            "demographics",
+            "vitals",
+            "results",
+            "medications",
+            "encounters",
+            "allergies",
+            "immunizations",
+            "social_history",
+            "problems",
+            "procedures",
+            "plan_of_care",
+            "payers"
+        ]
+  },
   errors: 
    [ 'nullFlavor alert:  missing but required streetLines in Address -> Patient -> CCD',
      'nullFlavor alert:  missing but required value in PhysicalQuantity -> MedicationAdministration -> Prescription -> MedicationsSection -> CCD'
      ] }
 ```
 
-Also, see [/example](./example) for example above as well as how to parse individual sections.
+See [/example](./example) for example above as well as how to parse individual sections.
+***
 
-## Link to data model docs in docs/model.md
-
-Detailed description of JSON based data model (tied to CCDA spec)
-
-[JSON based Blue Button data model](./docs/model.md)
-
-[CMS Documentation](./docs/cms.md)
 
 ## Goals
 
@@ -232,21 +245,11 @@ Detailed description of JSON based data model (tied to CCDA spec)
 - Speed of parsing
 - Well tested on entire corpora of CCDA samples from https://github.com/jmandel/sample_ccdas
 
-## Roadmap (End of May, Release 1.0)
-
-- First file format is the "Continuity of Care Document", a Blue Button format type that capture’s entire patients medical history.  The CCD is comprised of five required sections (allergies, medications, problems, procedures, lab results) and three optional sections (encounters, immunizations, vitals).
-- CCDA JSON data model is fully defined as separate library with validation support
-- bluebutton.js parser is rewriten for speed and support of updated CCDA JSON data model
-- Uses libxmljs parser (under Node.js environment) or browser based parser for XML
-- Comprehensive test for Node.js module (with Mocha/Chai)
-
 ## Future Roadmap
 
 - C32 support reintroduced
-- Full browser support for all functionality
 - Merge back into bluebutton.js repo
-- Comprehensive test for browser environment
-- After initial re-write we are planning to reintroduce this "fork" back into bluebutton.js community.
+- Refactoring into smaller components (sub-modules)
 
 ## Contributing
 
