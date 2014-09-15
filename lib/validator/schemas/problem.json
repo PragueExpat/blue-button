@@ -14,13 +14,14 @@
         "problem": {
             "type": "object",
             "properties": {
-                "name": {
-                    "type": "string"
+                "code": {
+                    "$ref": "http://local.com/common_models#/properties/cda_coded_entry"
                 },
                 "date_time": {
                     "$ref": "http://local.com/common_models#/properties/cda_date"
                 }
-            }
+            },
+            "additionalProperties": false
         },
         "negation_indicator": {
             "type": "boolean"

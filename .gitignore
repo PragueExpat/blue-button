@@ -16,8 +16,10 @@ record.txt
 # ccda-explorer
 ccda-explorer/dump/
 ccda-explorer/dump_gen_xml/
+ccda-explorer/dump_gen_json/
 ccda-explorer/sample_ccdas/
 
 test/fixtures/files/generated/
+test/fixtures/files/parse_gen_parse
 
-
+test/proprietary

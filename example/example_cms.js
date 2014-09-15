@@ -13,8 +13,8 @@ console.log(info);
 
 //parse CMS data
 
-var data = bb.parseText2(data);
-//var data = bb.parseText(data);
+
+var data = bb.parseText(data);
 
 //console.log(JSON.stringify(data.interim,null,4));
 //console.log(JSON.stringify(data.data.demographics,null,4));
@@ -30,7 +30,7 @@ var val = validator.validateDocumentModel(data);
 //var val = validator.validateSectionObj(data.data.demographics, "demographics");
 var val = validator.validateSectionObj(data.data.claims[0], "claim");
 
-console.log(JSON.stringify(data.data.claims[0],null,4));
+console.log(JSON.stringify(data,null,4));
 
 console.log(data.meta.sections);
 console.log("---");
