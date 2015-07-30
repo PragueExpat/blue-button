@@ -8,8 +8,7 @@ describe('parser.js', function () {
     var txtfile = null;
 
     before(function (done) {
-        var filepath = path.join(__dirname, '../fixtures/parser-cms/sample.txt');
-        txtfile = fs.readFileSync(filepath, 'utf-8').toString();
+        txtfile = fs.readFileSync(__dirname + '/../fixtures/parser-cms/sample.txt', 'utf-8').toString();
         done();
     });
 
@@ -17,40 +16,19 @@ describe('parser.js', function () {
         expect(txtfile).to.exist;
 
         //convert string into JSON 
-        var result = bb.parseText(txtfile);
+        var result = bb.parse(txtfile);
         expect(result).to.exist;
 
         //console.log(JSON.stringify(result.data.providers, null, 10));
 
-        val = bb.validator.validateDocumentModel(result);
-
-        var err = bb.validator.getLastError();
+        var valid = bb.validator.validateDocumentModel(result);
 
         //if validation failed print all validation errors and summary by category of error
-        if (!err.valid) {
-
-            var _ = require("underscore");
-
-            function count(numbers) {
-                return _.reduce(numbers, function (result, current) {
-                    return result + 1;
-                }, 0);
-            }
-            var result = _.chain(err.errors)
-                .groupBy("code")
-                .map(function (value, key) {
-                    return {
-                        code: key,
-                        count: count(_.pluck(value, "code"))
-                    }
-                })
-                .value();
-
+        if (!valid) {
             console.log("Errors: \n", JSON.stringify(bb.validator.getLastError(), null, 4));
-            console.log("Errors summary: \n ", JSON.stringify(result, null, 4));
         }
 
-        expect(err.valid).to.equal(true);
+        expect(valid).to.be.true;
 
         done();
     });

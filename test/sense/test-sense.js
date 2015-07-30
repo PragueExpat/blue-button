@@ -6,6 +6,8 @@ var fs = require("fs");
 var senseString = require("../../index.js").senseString;
 
 describe('sense.js test', function () {
+    this.timeout(10000);
+
     var ccda = "";
     var xml = "";
     var json = "";
@@ -13,8 +15,9 @@ describe('sense.js test', function () {
     var text = "";
     var broken_xml = "";
     var va = {};
+    var ncpdp = "";
 
-    before(function () {
+    before(function (done) {
         ccda = fs.readFileSync('./test/fixtures/sense/CCD.example.xml').toString();
         xml = fs.readFileSync('./test/fixtures/sense/empty.xml').toString();
         xml_no_declaration = fs.readFileSync('./test/fixtures/sense/empty_no_declaration.xml').toString();
@@ -28,11 +31,17 @@ describe('sense.js test', function () {
         broken_xml = fs.readFileSync('./test/fixtures/sense/broken.xml').toString();
         pdf = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_6.pdf').toString();
 
-        var va_versions = ["12", "12_2", "12_2_1", "12_3", "12_4", "12_5", "12_5_1", "12_6"];
-        for (var v in va_versions) {
-            va[va_versions[v]] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_' + va_versions[v] + '.txt').toString();
-        };
+        va["12"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12.txt').toString();
+        va["12_2"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_2.txt').toString();
+        va["12_2_1"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_2_1.txt').toString();
+        va["12_3"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_3.txt').toString();
+        va["12_4"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_4.txt').toString();
+        va["12_5"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_5.txt').toString();
+        va["12_5_1"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_5_1.txt').toString();
+        va["12_6"] = fs.readFileSync('./test/fixtures/sense/VA_My_HealtheVet_Blue_Button_Sample_Version_12_6.txt').toString();
 
+        ncpdp = fs.readFileSync('./test/fixtures/sense/newrx.xml').toString();
+        done();
     });
 
     it('should return NULL for no string with data passed', function () {
@@ -73,7 +82,7 @@ describe('sense.js test', function () {
     });
 
     it('should return VA and version for VA BB text input', function () {
-        for (v in Object.keys(va)) {
+        for (var v in Object.keys(va)) {
             var key = Object.keys(va)[v];
             //console.log(key);
             var ver = key.split("_");
@@ -94,6 +103,13 @@ describe('sense.js test', function () {
         assert.equal('pdf', senseString(pdf).type);
     });
 
+    try {
+        require.resolve("blue-button-ncpdp");
+        it('should return NCPDP for NCPDP file input', function () {
+            assert.equal('ncpdp', senseString(ncpdp).type);
+        });
+    } catch (ex) {}
+
     it('should return FORMAT-X for format X text input', function () {
         assert.equal('format-x', senseString(format_x).type);
     });
@@ -103,7 +119,7 @@ describe('sense.js test', function () {
     });
 
     it('should return UNKNOWN for broken XML input', function () {
-        assert.equal('unknown', senseString(broken_xml).type);
+        expect(['unknown', 'xml']).to.include(senseString(broken_xml).type);
     });
 
 });

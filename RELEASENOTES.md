@@ -1,5 +1,28 @@
 # blue-button.js Release Notes
 
+# v.1.5.0 - June 12, 2015
+- Demographics race and ethnicity are now seperated.
+- Confidentiality Code and Set Identifier are now parsed into results meta attribute for ccda and c32.
+- Performer consistency
+
+# v.1.4.1 - March 11, 2015
+- c32 parser now uses allergy problem act statusCode as the allergy status
+
+# v.1.4.0 - February 27, 2015
+- Removed blue-button-generate methods from API (breaking change, applications should use blue-button-generate directly)
+- Supported sections of US Realm CCDA documents are now parsed even when they are not CCD.
+- Medications with medication activity that has negationInd attribute true are now ignored.
+- Results of xsi:type ST are now handled
+- Free text allergen name is now put into allergen name field when allergen is otherwise not specified.
+- Free text reaction name is now put into reaction name field when reaction is otherwise not specified.
+- Medication author now supoorts name and organization at the same time.
+- Null flavored email and telephone entries are properly handled.
+
+# v.1.3.0 - December 12, 2014
+- Created smaller modules: blue-button-xml, blue-button-generate, blue-button-model, blue-button-cms
+- Time zones are now used when they are specified in CCDA files.
+- Browser version using browserify
+- Added to Bower
 
 # v.1.2.0 - September 15, 2014
 - Enhanced to include support for US VA 32 Files.
