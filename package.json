@@ -29,7 +29,7 @@
   "dependencies": {
     "blue-button-meta": "^1.2.0",
     "deep-equal": "*",
-    "libxmljs": "*",
+    "libxmljs": "0.16.x",
     "node-uuid": "*",
     "underscore": "1.6.x",
     "winston": "^0.7.3",
