@@ -18,10 +18,15 @@ describe('parser.js', function () {
         var result = bb.parse(xmlfile);
         expect(result).to.exist;
 
+        //console.log(JSON.stringify(result.data.header, null, 4));
+        //console.log(result.data.header);
+
         var valid = bb.validator.validateDocumentModel(result);
 
         //if validation failed print all validation errors
         if (!valid) {
+            //console.log(JSON.stringify(result.data.header, null, 4));
+            //console.log(JSON.stringify(result.data.demographics, null, 4));
             console.log("Errors: \n", JSON.stringify(bb.validator.getLastError(), null, 4));
         }
 
